@@ -23,8 +23,7 @@ public class BookManagerMenu extends javax.swing.JFrame {
     public void setBookDetailsToTable(){
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/library_ms","root","");
+            Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from book_details");
             

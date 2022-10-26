@@ -24,8 +24,7 @@ public class OverdueMenu extends javax.swing.JFrame {
         long l = System.currentTimeMillis();
         java.sql.Date todaysDate = new java.sql.Date(l);
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/library_ms","root","");
+            Connection con = DBConnection.getConnection();
             PreparedStatement pst = con.prepareStatement("select * from issue_book_details where due_date < ? and status = ?");
             
             pst.setDate(1, todaysDate);

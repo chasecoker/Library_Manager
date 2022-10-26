@@ -20,7 +20,6 @@ public class SignupMenu extends javax.swing.JFrame {
         String contact = txt_contact.getText();
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             Connection con = DBConnection.getConnection();
             String sql = "insert into users(name,password,email,contact) values(?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
@@ -81,9 +80,7 @@ public class SignupMenu extends javax.swing.JFrame {
         boolean isExists = false;
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/library_ms","root","");
-            
+            Connection con = DBConnection.getConnection();           
             PreparedStatement pst = con.prepareStatement("select * from users where name = ?");
             pst.setString(1, name);
             ResultSet rs = pst.executeQuery();
